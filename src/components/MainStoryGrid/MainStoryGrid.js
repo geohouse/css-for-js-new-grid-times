@@ -33,7 +33,10 @@ const MainStoryGrid = () => {
         <SectionTitle>Opinion</SectionTitle>
         <StoryList>
           {OPINION_STORIES.map((story, index) => (
-            <OpinionStory key={story.id} {...story} />
+            <>
+              <OpinionStory key={story.id} {...story} />
+              {index !== OPINION_STORIES.length - 1 && <Divider></Divider>}
+            </>
           ))}
         </StoryList>
       </OpinionSection>
