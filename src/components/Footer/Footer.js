@@ -1,39 +1,34 @@
-import React from 'react';
-import { Twitter, Facebook } from 'react-feather';
-import styled from 'styled-components/macro';
-import MaxWidthWrapper from '../MaxWidthWrapper';
+import React from "react";
+import { Twitter, Facebook } from "react-feather";
+import styled from "styled-components/macro";
+import MaxWidthWrapper from "../MaxWidthWrapper";
 
-import VisuallyHidden from '../VisuallyHidden';
+import VisuallyHidden from "../VisuallyHidden";
+import { QUERIES } from "../../constants";
 
 const Footer = () => {
   return (
     <Wrapper>
       <MaxWidthWrapper>
         <TopRow>
-          <nav>
-            <TopNavList>
-              <li>
-                <a href="/about">About</a>
-              </li>
-              <li>
-                <a href="/press">Press Releases</a>
-              </li>
-              <li>
-                <a href="/contact">Contact Us</a>
-              </li>
-            </TopNavList>
-          </nav>
+          <TopNavList>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/press">Press Releases</a>
+            </li>
+            <li>
+              <a href="/contact">Contact Us</a>
+            </li>
+          </TopNavList>
           <Social>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Facebook
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Facebook</VisuallyHidden>
               <Facebook size={20} />
             </a>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Twitter
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Twitter</VisuallyHidden>
               <Twitter size={20} />
             </a>
           </Social>
@@ -144,6 +139,13 @@ const TopRow = styled.div`
   font-size: 0.875rem;
   border-bottom: 1px solid var(--color-gray-700);
   padding: 24px 0;
+  @media ${QUERIES.tabletAndUp} {
+    flex-direction: row;
+    justify-content: center;
+  }
+  @media ${QUERIES.laptopAndUp} {
+    justify-content: flex-end;
+  }
 `;
 
 const Social = styled.div`
@@ -156,6 +158,9 @@ const Social = styled.div`
 
   path {
     stroke-width: 1.5px;
+  }
+  @media ${QUERIES.tabletAndUp} {
+    margin-left: 48px;
   }
 `;
 
@@ -170,6 +175,12 @@ const MainNavArea = styled.div`
   gap: 32px;
   padding: 32px 0 48px;
   text-align: center;
+  @media ${QUERIES.tabletAndUp} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    text-align: left;
+    justify-content: space-between;
+  }
 `;
 
 const MainNavHeading = styled.h2`
@@ -196,6 +207,10 @@ const Subfooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${QUERIES.laptopAndUp} {
+    align-items: flex-start;
+  }
 `;
 
 const Logo = styled.a`
